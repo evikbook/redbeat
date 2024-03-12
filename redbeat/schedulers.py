@@ -480,7 +480,7 @@ class RedBeatScheduler(Scheduler):
         return next_time_to_run
 
     def tick(self, min=min, **kwargs):
-        if self.lock_key:
+        if self.lock_key and self.lock:
             logger.debug('beat: Extending lock...')
             self.lock.extend(int(self.lock_timeout))
 
